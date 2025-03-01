@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://survifelrun.nl/</loc>
+    <lastmod>2025-02-28</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://survifelrun.nl/#news</loc>
+    <lastmod>2025-02-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://survifelrun.nl/#info</loc>
+    <lastmod>2025-02-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://survifelrun.nl/#vragen</loc>
+    <lastmod>2025-02-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://survifelrun.nl/#sponsoren</loc>
+    <lastmod>2025-02-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://survifelrun.nl/#socials</loc>
+    <lastmod>2025-02-28</lastmod>
+    <priority>0.5</priority>
+  </url>
+</urlset>

@@ -7,5 +7,8 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   deps: [
     'cdk-remote-stack',
   ],
+  gitignore: [
+    '.DS_Store'
+  ]
 });
 project.synth();

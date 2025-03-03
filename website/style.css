@@ -10,7 +10,7 @@
   --btn-color-hover: #2891ab;
   --section-background: #ffffff;
 
-  --hero-h1-size: clamp(2rem, 5vw, 4rem)
+  --hero-h1-size: clamp(2rem, 8vw, 4rem)
 }
 
 @font-face {
@@ -189,7 +189,11 @@ li:hover .drop-menu {
 .hero-text h1 {
   margin: 0;
   font-weight: bold;
+
+  /* Do not size any further than 4rem but we want more responsiveness */
+  /* font-size: min(var(--hero-h1-size), 4rem); */
   font-size: var(--hero-h1-size);
+
 }
 
 .hero-text h2 {
@@ -285,6 +289,11 @@ footer {
   .hero {
     /* On small mobile divices the ui bar will affect vh so use vhmax */
     height: 100vmax;
+  }
+
+  .hero-text h1::after {
+    background: none;
+    content: "";
   }
 }
 

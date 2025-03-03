@@ -1,23 +1,21 @@
-import { App, Stack, StackProps } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-
-export class MyStack extends Stack {
-  constructor(scope: Construct, id: string, props: StackProps = {}) {
-    super(scope, id, props);
-
-    // define resources here...
-  }
-}
-
-// for development, use account/region from cdk cli
-const devEnv = {
-  account: process.env.CDK_DEFAULT_ACCOUNT,
-  region: process.env.CDK_DEFAULT_REGION,
-};
+import { App } from 'aws-cdk-lib';
+import { MainStack } from './MainStack';
+import { Statics } from './Statics';
+import { UsEastStack } from './UsEastStack';
 
 const app = new App();
 
-new MyStack(app, 'SurviFELrun-dev', { env: devEnv });
-// new MyStack(app, 'SurviFELrun-prod', { env: prodEnv });
+const useast = new UsEastStack(app, 'SurviFELrun-us-east-1', {
+  env: {
+    account: Statics.awsAccount.account,
+    region: 'us-east-1',
+  },
+});
+
+const main = new MainStack(app, 'SurviFELrun-stack', {
+  env: Statics.awsAccount,
+});
+
+main.addDependency(useast, 'Cert and hosted zone must exist before creating main stack');
 
 app.synth();

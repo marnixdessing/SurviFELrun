@@ -6,6 +6,8 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   projenrcTs: true,
   deps: [
     'cdk-remote-stack',
+    'mustache',
+    '@types/mustache',
   ],
   gitignore: [
     '.DS_Store'

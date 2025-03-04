@@ -70,7 +70,8 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 500;
+  /* Z-index should be greater then lefelet controls */
+  z-index: 1010;
   transition: --headerGradientTarget .5s;
   color: white;
 }
@@ -173,6 +174,18 @@ li:hover .drop-menu {
   justify-content: center;
   text-align: center;
   color: white;
+}
+
+.hero.hero-mini {
+  height: 30vh;
+}
+
+.hero.hero-mini h1:after {
+  display: none;
+}
+
+.hero.hero-mini h1 {
+  margin-top: 4rem;
 }
 
 .hero-text {

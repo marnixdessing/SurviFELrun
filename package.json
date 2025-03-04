@@ -42,9 +42,11 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
+    "@types/mustache": "^4.2.5",
     "aws-cdk-lib": "^2.1.0",
     "cdk-remote-stack": "^2.1.0",
-    "constructs": "^10.0.5"
+    "constructs": "^10.0.5",
+    "mustache": "^4.2.0"
   },
   "license": "Apache-2.0",
   "publishConfig": {

@@ -8,7 +8,7 @@
 
 <section id="map" class="section">
   <div class="inner-section">
-    <div style="height:80vh;" id="demoMap"></div>
+    <div style="height:80vh;" id="parcours-map"></div>
   </div>
   <div id="obstakels"></div>
 </section>
@@ -107,7 +107,7 @@
   }
 
   // Initialize the map
-  var map = L.map('demoMap').setView([51.505, -0.09], 13); // Default center
+  var map = L.map('parcours-map').setView([51.505, -0.09], 13); // Default center
 
   map.addControl(new L.Control.FullScreen());
 
@@ -117,8 +117,8 @@
   }).addTo(map);
 
   // Draw layers
-  drawLayer('/static/8km.kml', 'var(--fel-blauw)', 10, '8 km', true);
-  drawLayer('/static/5km.kml', 'var(--fel-oranje)', 10, '5 km', false);
+  drawLayer('/static/8km.kml', 'var(--fel-oranje)', 10, '8 km', true);
+  drawLayer('/static/5km.kml', 'var(--fel-blauw)', 10, '5 km', false);
 
   // Marker eigenschappen
   var NumberIcons = L.Icon.extend({

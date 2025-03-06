@@ -1,399 +1,242 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
-
-  <title>SurviFELrun 2025 - The Ultimate Survival Run Challenge in Nijmegen</title>
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="./fullscreenmenu.css" />
-  <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
-
-  <!-- Meta tags -->
-  <meta name="description" content="SurivFELrun 2025. Can you survive the challenge?">
-  <meta name="author" content="NSSV FEL">
-  <meta name="copyright" content="NSSV FEL">
-  <meta property="og:title" content="SurviFELrun 2025">
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://survifelrun.nl/img/link.png">
-  <meta property="og:url" content="https://survifelrun.nl">
-  <meta property="og:description" content="SurivFELrun 2025. Can you survive the challenge? Sign up now!">
-  <meta property="og:site_name" content="SurviFELrun">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "SurviFELrun 2025",
-    "startDate": "2025-05-18T10:00",
-    "location": {
-      "@type": "Place",
-      "name": "Park Brakkenstein, Nijmegen",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Heyendaalseweg 141",
-        "addressLocality": "Nijmegen",
-        "addressCountry": "NL"
-      }
-    },
-    "description": "A challenging and fun survival run event in Nijmegen. Choose between 5km or 8km tracks!",
-    "url": "https://survifelrun.nl"
-  }
-  </script>
-
-
-</head>
-
-<body>
-
-  <!-- Full Screen Menu -->
-  <div class="full-screen-menu" id="full-screen-menu">
-    <div class="menu-close" id="menu-close">&#10005;</div> <!-- Close icon -->
-    <div class="buttons">
-      <a href="#news">Laatste nieuws</a>
-      <a href="#info">Deelnemers informatie</a>
-      <div class="sub">
-        <a href="#info">Praktische informatie</a>
-        <!-- <a href="#info">categoriën</a> -->
-        <a href="#info">Parcours en hindernissen</a>
-        <a href="#info">Starttijden</a>
-        <a href="#info">Uitslagen</a>
-        <a href="#info">Pre-run clinic</a>
-      </div>
-      <a href="#vragen">Vragen</a>
-      <a href="#sponsoren">Sponsoren</a>
-      <!-- <li><a href="#about">Over ons</a></li> -->
-    </div>
+{{>header}}
+<!-- HERO incl menu -->
+<header class="hero hero-mini">
+  <div class="hero-text">
+    <h1>Parcours en hindernissen</h1>
   </div>
+</header>
 
-  <nav class="menu">
-    <h1>Survi<span class="fel">FEL</span>run</h1>
-    <ul class="menu-normal">
-      <li><a href="#news">Laatste nieuws</a></li>
-      <li>
-        <a href="#info">Deelnemers informatie</a>
-        <ul class="drop-menu">
-          <li><a href="#info">Praktische informatie</a></li>
-          <!-- <li><a href="#info">categoriën</a></li> -->
-          <li><a href="#info">Parcours en hindernissen</a></li>
-          <li><a href="#info">Starttijden</a></li>
-          <li><a href="#info">Uitslagen</a></li>
-          <li><a href="#info">Pre-run clinic</a></li>
-        </ul>
-      </li>
-      <li><a href="#vragen">Vragen</a></li>
-      <li><a href="#sponsoren">Sponsoren</a></li>
-      <!-- <li><a href="#about">Over ons</a></li> -->
-    </ul>
-    <div id="menu-icon" class="menu-small"><span class="material-symbols-outlined">menu</span></div>
-  </nav>
-
-  <!-- HERO incl menu -->
-  <header class="hero hero-mini">
-    <div class="hero-text">
-      <h1>Parcours en hindernissen</h1>
-    </div>
-  </header>
-
-  <section id="sponsoren" class="section">
-    <div class="inner-section">
-      <div style="height:80vh;" id="demoMap"></div>
-    </div>
-    <div id="obstakels"></div>
-  </section>
+<section id="map" class="section">
+  <div class="inner-section">
+    <div style="height:80vh;" id="demoMap"></div>
+  </div>
+  <div id="obstakels"></div>
+</section>
 
 
-  <section id="socials" class="section">
-    <h1>Volg je onze socials al?</h1>
-    <a href="#" class="social-link"><img src="img/instagram.png" alt="instagram" /></a>
-    <a href="#" class="social-link"><img src="img/facebook.png" alt="facebook" /></a>
-  </section>
+<link rel="stylesheet" href="map/leaflet.css" />
+<script src="map/leaflet.js"></script>
+<script src="map/leaflet-omnivore.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen/Control.FullScreen.css" />
+<script src="https://unpkg.com/leaflet.fullscreen/Control.FullScreen.js"></script>
+<script>
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">Op zoek naar <a href="https://nssvfel.nl">NSSV FEL</a>?</div>
-      <div class="footer-section">© 2025 SurviFELrun</div>
-    </div>
-  </footer>
-
-
-  <script>
-    // Listen for the scroll event
-    window.addEventListener('scroll', function () {
-      // Check if the page is scrolled away from the top
-      if (window.scrollY > 100) {
-        document.querySelector('.menu').classList.add('scrolled'); // Add the 'scrolled' class
-      } else {
-        document.querySelector('.menu').classList.remove('scrolled'); // Remove the 'scrolled' class
-      }
-    });
-
-
-    const menuIcon = document.getElementById("menu-icon");
-    const fullScreenMenu = document.getElementById("full-screen-menu");
-    const menuClose = document.getElementById("menu-close");
-
-    // Toggle menu visibility
-    menuIcon.addEventListener("click", function () {
-      fullScreenMenu.classList.add('visible');
-    });
-
-    menuClose.addEventListener("click", function () {
-      fullScreenMenu.classList.remove('visible');
-    });
-
-    // Setup FAQ toggle
-    document.querySelectorAll('.faq .question h2').forEach(q => {
-      q.addEventListener("click", function () {
-        if (q.parentElement.classList.contains('extended')) {
-          q.parentElement.classList.remove('extended');
-        } else {
-          q.parentElement.classList.add('extended');
+  /**
+   * Draw a KML file on the map
+   */
+  function drawLayer(file, color, weight, label, doFocus) {
+    const customLayer = omnivore.kml(file).addTo(map)
+      .on('ready', function (e) {
+        if (doFocus) {
+          map.fitBounds(e.target.getBounds()); // Adjust map to fit KML bounds
         }
-      });
-    })
-
-    document.querySelectorAll('#full-screen-menu .buttons a').forEach(q => {
-      q.addEventListener("click", function () {
-        fullScreenMenu.classList.remove('visible');
-      });
-    })
-
-  </script>
-
-
-  <link rel="stylesheet" href="map/leaflet.css" />
-  <script src="map/leaflet.js"></script>
-  <script src="map/leaflet-omnivore.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen/Control.FullScreen.css" />
-  <script src="https://unpkg.com/leaflet.fullscreen/Control.FullScreen.js"></script>
-  <script>
-
-    /**
-     * Draw a KML file on the map
-     */
-    function drawLayer(file, color, weight, label, doFocus) {
-      const customLayer = omnivore.kml(file).addTo(map)
-        .on('ready', function (e) {
-          if (doFocus) {
-            map.fitBounds(e.target.getBounds()); // Adjust map to fit KML bounds
-          }
-          customLayer.eachLayer(function (layer) {
-            layer.setStyle({
-              color: color,
-              weight: weight
-            }).bindPopup(label);
-          });
+        customLayer.eachLayer(function (layer) {
+          layer.setStyle({
+            color: color,
+            weight: weight
+          }).bindPopup(label);
         });
-    }
-
-
-    // Van 22 tot 28 zijn 8km hindernissen
-
-    function createTable(markers) {
-      const table = document.createElement("table");
-      table.border = "1";
-
-      // Table headers
-      const thead = document.createElement("thead");
-      const headerRow = document.createElement("tr");
-      ["#", "Name", "8km", "5km"].forEach(text => {
-        const th = document.createElement("th");
-        th.textContent = text;
-        headerRow.appendChild(th);
       });
-      thead.appendChild(headerRow);
-      table.appendChild(thead);
-
-      const tbody = document.createElement("tbody");
-      markers.forEach((marker, index) => {
-        const row = document.createElement("tr");
+  }
 
 
-        const indexTd = document.createElement("td");
-        indexTd.textContent = index + 1;
-        row.appendChild(indexTd);
+  // Van 22 tot 28 zijn 8km hindernissen
 
-        // Name
-        const name = marker.querySelector('name').innerHTML;
-        const nameTd = document.createElement("td");
-        nameTd.textContent = name;
-        row.appendChild(nameTd);
+  function createTable(markers) {
+    const table = document.createElement("table");
+    table.border = "1";
 
-        const km5 = document.createElement("td");
-        km5.textContent = '';
-        if (index < 21 || index > 27) {
-          km5.textContent = '✅';
-        }
+    // Table headers
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    ["#", "Name", "8km", "5km"].forEach(text => {
+      const th = document.createElement("th");
+      th.textContent = text;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
 
-        row.appendChild(km5);
+    const tbody = document.createElement("tbody");
+    markers.forEach((marker, index) => {
+      const row = document.createElement("tr");
 
-        const km8 = document.createElement("td");
-        km8.textContent = '✅';
-        row.appendChild(km8);
 
-        tbody.appendChild(row);
-      });
-      table.appendChild(tbody);
+      const indexTd = document.createElement("td");
+      indexTd.textContent = index + 1;
+      row.appendChild(indexTd);
 
-      document.getElementById('obstakels').appendChild(table);
-    }
+      // Name
+      const name = marker.querySelector('name').innerHTML;
+      const nameTd = document.createElement("td");
+      nameTd.textContent = name;
+      row.appendChild(nameTd);
 
-    // Draw MARKERS ON MAP
-    function addMarksToMap(markers) {
-      markers.forEach((marker, index) => {
-        const name = marker.querySelector('name').innerHTML;
-        const coordinatesStr = marker.querySelector('Point coordinates').innerHTML;
-        const coordinates = coordinatesStr.split(',').map(nr => parseFloat(nr));
-        const nummer = index + 1;
-        const img = 'https://raw.githubusercontent.com/sheiun/leaflet-color-number-markers/main/dist/img/black/marker-icon-2x-black-' + nummer + '.png'
-        const icon = new NumberIcons({ iconUrl: img });
-        L.marker([coordinates[1], coordinates[0]], { icon })
-          .addTo(map)
-          .bindPopup(nummer + '. ' + name);
-      });
-    }
-
-    // Initialize the map
-    var map = L.map('demoMap').setView([51.505, -0.09], 13); // Default center
-
-    map.addControl(new L.Control.FullScreen());
-
-    // Add a tile layer (OpenStreetMap)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Draw layers
-    drawLayer('/static/8km.kml', 'var(--fel-blauw)', 10, '8 km', true);
-    drawLayer('/static/5km.kml', 'var(--fel-oranje)', 10, '5 km', false);
-
-    // Marker eigenschappen
-    var NumberIcons = L.Icon.extend({
-      options: {
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -41]
+      const km5 = document.createElement("td");
+      km5.textContent = '';
+      if (index < 21 || index > 27) {
+        km5.textContent = '✅';
       }
+
+      row.appendChild(km5);
+
+      const km8 = document.createElement("td");
+      km8.textContent = '✅';
+      row.appendChild(km8);
+
+      tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+
+    document.getElementById('obstakels').appendChild(table);
+  }
+
+  // Draw MARKERS ON MAP
+  function addMarksToMap(markers) {
+    markers.forEach((marker, index) => {
+      const name = marker.querySelector('name').innerHTML;
+      const coordinatesStr = marker.querySelector('Point coordinates').innerHTML;
+      const coordinates = coordinatesStr.split(',').map(nr => parseFloat(nr));
+      const nummer = index + 1;
+      const img = 'https://raw.githubusercontent.com/sheiun/leaflet-color-number-markers/main/dist/img/black/marker-icon-2x-black-' + nummer + '.png'
+      const icon = new NumberIcons({ iconUrl: img });
+      L.marker([coordinates[1], coordinates[0]], { icon })
+        .addTo(map)
+        .bindPopup(nummer + '. ' + name);
+    });
+  }
+
+  // Initialize the map
+  var map = L.map('demoMap').setView([51.505, -0.09], 13); // Default center
+
+  map.addControl(new L.Control.FullScreen());
+
+  // Add a tile layer (OpenStreetMap)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Draw layers
+  drawLayer('/static/8km.kml', 'var(--fel-blauw)', 10, '8 km', true);
+  drawLayer('/static/5km.kml', 'var(--fel-oranje)', 10, '5 km', false);
+
+  // Marker eigenschappen
+  var NumberIcons = L.Icon.extend({
+    options: {
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -41]
+    }
+  });
+
+
+  fetch('/static/Hindernissen.kml')
+    .then(resp => resp.text())
+    .then(kml => {
+      const parsed = new DOMParser().parseFromString(kml, "text/xml");
+      const markers = parsed.querySelectorAll('Placemark');
+      addMarksToMap(markers);
+      createTable(markers);
     });
 
-
-    fetch('/static/Hindernissen.kml')
-      .then(resp => resp.text())
-      .then(kml => {
-        const parsed = new DOMParser().parseFromString(kml, "text/xml");
-        const markers = parsed.querySelectorAll('Placemark');
-        addMarksToMap(markers);
-        createTable(markers);
-      });
-
-    var legend = L.control({ position: "bottomleft" });
-    legend.onAdd = function (map) {
-      var div = L.DomUtil.create("div", "legend");
-      div.innerHTML += "<h2>Afstanden</h2>";
-      div.innerHTML += '<span class="km8">5 km<span>';
-      div.innerHTML += '<span class="km5">8 km<span>';
-      return div;
-    };
-    map.addControl(legend);
+  var legend = L.control({ position: "bottomleft" });
+  legend.onAdd = function (map) {
+    var div = L.DomUtil.create("div", "legend");
+    div.innerHTML += "<h2>Afstanden</h2>";
+    div.innerHTML += '<span class="km8">5 km<span>';
+    div.innerHTML += '<span class="km5">8 km<span>';
+    return div;
+  };
+  map.addControl(legend);
 
 
-  </script>
+</script>
+<style>
+  .legend {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    color: #555;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
 
-  <style>
-    .legend {
-      background: white;
-      padding: 10px;
-      border-radius: 5px;
-      color: #555;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    }
+  .legend h2 {
+    margin: 0;
+  }
 
-    .legend h2 {
-      margin: 0;
-    }
+  .legend span {
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    color: black;
+  }
 
-    .legend span {
-      display: block;
-      font-weight: bold;
-      font-size: 1rem;
-      color: black;
-    }
+  .legend .km8 {
+    background: var(--fel-blauw)
+  }
 
-    .legend .km8 {
-      background: var(--fel-blauw)
-    }
+  .legend .km5 {
+    background: var(--fel-oranje)
+  }
 
-    .legend .km5 {
-      background: var(--fel-oranje)
-    }
+  .legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+  }
 
-    .legend i {
-      width: 18px;
-      height: 18px;
-      float: left;
-      margin-right: 8px;
-    }
+  #obstakels {
+    max-width: 50vw;
+    margin: 3rem auto;
+  }
 
+  #obstakels table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    text-align: left;
+  }
+
+  #obstakels table th,
+  #obstakels table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #obstakels table th {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+  }
+
+  #obstakels table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  #obstakels table tr:hover {
+    background-color: #ddd;
+  }
+
+  #obstakels table td {
+    text-align: center;
+  }
+
+  #obstakels table td:first-child {
+    font-weight: bold;
+  }
+
+  #obstakels table td:contains('✅') {
+    color: green;
+    font-size: 1.2em;
+  }
+
+  @media screen and (max-width: 768px) {
     #obstakels {
-      max-width: 50vw;
-      margin: 3rem auto;
+      max-width: inherit;
     }
 
-    #obstakels table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: Arial, sans-serif;
-      text-align: left;
-    }
+  }
+</style>
 
-    #obstakels table th,
-    #obstakels table td {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-
-    #obstakels table th {
-      background-color: #333;
-      color: white;
-      font-weight: bold;
-    }
-
-    #obstakels table tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    #obstakels table tr:hover {
-      background-color: #ddd;
-    }
-
-    #obstakels table td {
-      text-align: center;
-    }
-
-    #obstakels table td:first-child {
-      font-weight: bold;
-    }
-
-    #obstakels table td:contains('✅') {
-      color: green;
-      font-size: 1.2em;
-    }
-
-    @media screen and (max-width: 768px) {
-      #obstakels {
-        max-width: inherit;
-      }
-
-    }
-  </style>
-
-
-</body>
-
-</html>
+{{>footer}}

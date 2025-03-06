@@ -10,7 +10,8 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     '@types/mustache',
   ],
   gitignore: [
-    '.DS_Store'
+    '.DS_Store',
+    'dist'
   ]
 });
 project.synth();

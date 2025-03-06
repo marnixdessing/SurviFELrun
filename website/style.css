@@ -85,6 +85,10 @@ a {
   margin-bottom: 0;
 }
 
+.menu h1 a {
+  color: white;
+}
+
 .menu h1::after {
   margin-left: 5px;
   background-image: url('img/logo.png');

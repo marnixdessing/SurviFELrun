@@ -1,0 +1,102 @@
+
+  <section id="sponsoren" class="section">
+    <div class="inner-section">
+      <h1>Sponsoren</h1>
+      <p>Ook dit jaar zal de organisatie weer gesteund worden door tal van sponsoren die helpen onze run te organiseren.
+        Bent u ook geïnteresseerd in sponsoring van onze run en promotie van uw bedrijf bij talloze fanatieke en
+        gemotiveerde studenten? Neem dan contact op met <a
+          href="mailto:survifelrun@nssvfel.nl">survifelrun@nssvfel.nl</a>!</p>
+      <p>Dit evenement is niet mogelijk zonder onze sponsoren!</p>
+    </div>
+
+    <div class="cards-sponsoring">
+      <div class="card-sponsoring">
+        <img src="img/sponsoren/runnersworld.png">
+      </div>
+      <div class="card-sponsoring">
+        <img src="img/sponsoren/bruggink.png">
+      </div>
+      <div class="card-sponsoring">
+        <img src="img/sponsoren/survivalmaterialen.png">
+      </div>
+      <div class="card-sponsoring">
+        <img src="img/sponsoren/shenk.jpg">
+      </div>
+      <div class="card-sponsoring">
+        <img src="img/sponsoren/koekkoek.jpg">
+      </div>
+      <div class="card-sponsoring">
+        <img src="img/sponsoren/plus.png">
+      </div>
+      <div class="card-sponsoring">
+        <img src="img/sponsoren/radboud.png">
+      </div>
+      <div class="card-sponsoring">
+        <img src="img/sponsoren/nssr.png">
+      </div>
+    </div>
+
+  </section>
+
+  <section id="socials" class="section">
+    <h1>Volg je onze socials al?</h1>
+    <a href="#" class="social-link"><img src="img/instagram.png" alt="instagram" /></a>
+    <a href="#" class="social-link"><img src="img/facebook.png" alt="facebook" /></a>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">Op zoek naar <a href="https://nssvfel.nl">NSSV FEL</a>?</div>
+      <div class="footer-section">© 2025 SurviFELrun</div>
+    </div>
+  </footer>
+
+
+  <script>
+    // Listen for the scroll event
+    window.addEventListener('scroll', function () {
+      // Check if the page is scrolled away from the top
+      if (window.scrollY > 100) {
+        document.querySelector('.menu').classList.add('scrolled'); // Add the 'scrolled' class
+      } else {
+        document.querySelector('.menu').classList.remove('scrolled'); // Remove the 'scrolled' class
+      }
+    });
+
+
+    const menuIcon = document.getElementById("menu-icon");
+    const fullScreenMenu = document.getElementById("full-screen-menu");
+    const menuClose = document.getElementById("menu-close");
+
+    // Toggle menu visibility
+    menuIcon.addEventListener("click", function () {
+      fullScreenMenu.classList.add('visible');
+    });
+
+    menuClose.addEventListener("click", function () {
+      fullScreenMenu.classList.remove('visible');
+    });
+
+    // Setup FAQ toggle
+    document.querySelectorAll('.faq .question h2').forEach(q => {
+      q.addEventListener("click", function () {
+        if (q.parentElement.classList.contains('extended')) {
+          q.parentElement.classList.remove('extended');
+        } else {
+          q.parentElement.classList.add('extended');
+        }
+      });
+    })
+
+    document.querySelectorAll('#full-screen-menu .buttons a').forEach(q => {
+      q.addEventListener("click", function () {
+        fullScreenMenu.classList.remove('visible');
+      });
+    })
+
+  </script>
+
+
+</body>
+
+</html>

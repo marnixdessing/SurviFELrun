@@ -1,6 +1,6 @@
-import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "fs";
-import { render } from "mustache";
-import { basename, join } from "path";
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
+import { basename, join } from 'path';
+import { render } from 'mustache';
 
 export function compile(path: string, dist: string = './dist') {
   const header = readFileSync(join(path, 'templates', 'header.mustache')).toString('utf-8');
@@ -13,7 +13,7 @@ export function compile(path: string, dist: string = './dist') {
   mkdirSync(dist);
 
   // Copy all files
-  cpSync(path, dist, { recursive: true })
+  cpSync(path, dist, { recursive: true });
 
   // Overwrite html template
   const htmlfiles = readdirSync(path).filter(file => file.endsWith('.html'));
@@ -30,3 +30,7 @@ export function compile(path: string, dist: string = './dist') {
   }
 
 }
+
+console.log('Compiling static webpages...');
+compile('./website');
+console.log('Done compiling static webpages...');

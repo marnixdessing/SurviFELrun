@@ -78,20 +78,20 @@ export class MainStack extends Stack {
     this.websiteBucket.addToResourcePolicy(new PolicyStatement({
       effect: Effect.ALLOW,
       principals: [
-        new ServicePrincipal('cloudfront.amazonaws.com')
+        new ServicePrincipal('cloudfront.amazonaws.com'),
       ],
       actions: [
-        's3:GetObject'
+        's3:GetObject',
       ],
       resources: [
         this.websiteBucket.bucketArn,
         this.websiteBucket.bucketArn + '/*',
       ],
       conditions: {
-        "StringEquals": {
-          "AWS:SourceArn": distribution.distributionArn,
-        }
-      }
+        StringEquals: {
+          'AWS:SourceArn': distribution.distributionArn,
+        },
+      },
     }));
 
     return distribution;

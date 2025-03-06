@@ -8,10 +8,14 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     'cdk-remote-stack',
     'mustache',
     '@types/mustache',
+    'ts-node',
   ],
   gitignore: [
     '.DS_Store',
-    'dist'
-  ]
+    'dist',
+  ],
 });
+
+project.tasks.tryFind('pre-compile')?.exec('npx ts-node src/compile.ts');
+
 project.synth();

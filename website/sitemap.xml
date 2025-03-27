@@ -21,13 +21,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://survifelrun.nl/#sponsoren</loc>
+    <loc>https://survifelrun.nl/#vrijwilligers</loc>
     <lastmod>2025-02-28</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://survifelrun.nl/#socials</loc>
+    <loc>https://survifelrun.nl/#sponsoren</loc>
     <lastmod>2025-02-28</lastmod>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>
